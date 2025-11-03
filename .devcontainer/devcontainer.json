@@ -1,21 +1,27 @@
 {
-  "name": "Lab 6 - DSAR Python Environment",
+  "name": "DSAR Lab 6 (Codespaces)",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
+        "ms-python.vscode-pylance",
         "ms-toolsai.jupyter",
-        "ms-toolsai.datawrangler",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
         "GitHub.copilot",
-        "GitHub.copilot-chat"
+        "GitHub.copilot-chat",
+        "ms-toolsai.datawrangler"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "jupyter.notebookFileRoot": "${workspaceFolder}"
+        "jupyter.jupyterServerType": "local",
+        "jupyter.notebookFileRoot": "${workspaceFolder}",
+        "jupyter.askForKernelRestart": false,
+        "notebook.output.textLineLimit": 5000,
+        "editor.formatOnSave": true
       }
     }
   },
-  "postCreateCommand": "pip install -r requirements.txt",
-  "forwardPorts": [8888]
+  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt && pip install nbstripout && nbstripout --install --attributes .gitattributes"
 }
